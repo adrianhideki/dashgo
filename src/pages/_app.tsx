@@ -6,6 +6,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     // o resetCSS remove as estilizações padrão do html element
     // ex: margin no body
+    // resetCSS={false} volta as configurações padrão do html
     <ChakraProvider theme={theme}>
       <Component {...pageProps} />
     </ChakraProvider>)
