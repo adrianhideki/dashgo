@@ -37,24 +37,24 @@ const options = {
       color: theme.colors.gray[600],
     },
     categories: [
-      '2021-04-18T00:00:00.000Z',
-      '2021-04-19T00:00:00.000Z',
-      '2021-04-20T00:00:00.000Z',
-      '2021-04-21T00:00:00.000Z',
-      '2021-04-22T00:00:00.000Z',
-      '2021-04-23T00:00:00.000Z',
-      '2021-04-24T00:00:00.000Z',
+      "2021-04-18T00:00:00.000Z",
+      "2021-04-19T00:00:00.000Z",
+      "2021-04-20T00:00:00.000Z",
+      "2021-04-21T00:00:00.000Z",
+      "2021-04-22T00:00:00.000Z",
+      "2021-04-23T00:00:00.000Z",
+      "2021-04-24T00:00:00.000Z",
     ],
   },
   fill: {
     opacity: 0.3,
-    type: 'gradient',
+    type: "gradient",
     gradient: {
-      shade: 'dark',
+      shade: "dark",
       opacityFrom: 0.7,
       opacityTo: 0.3,
-    }
-  }
+    },
+  },
 };
 
 // tipos de dados
@@ -73,13 +73,13 @@ export default function Dashboard() {
         <Sidebar />
 
         <SimpleGrid flex="1" gap="4" minChildWidth="320px" align="flex-start">
-          <Box p="8" bg="gray.800" borderRadius={8} pb="4">
+          <Box p={["6", "8"]} bg="gray.800" borderRadius={8} pb="4">
             <Text fontSize="lg" mb="4">
               Inscritos da semana
             </Text>
             <Chart type="area" height="160" options={options} series={series} />
           </Box>
-          <Box p="8" bg="gray.800" borderRadius={8} pb="4">
+          <Box p={["6", "8"]} bg="gray.800" borderRadius={8} pb="4">
             <Text fontSize="lg" mb="4">
               Taxa de abertura
             </Text>
