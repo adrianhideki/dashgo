@@ -1,4 +1,4 @@
-import Input from "../components/Form/Input";
+import { Input } from "../components/Form/Input";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Flex, Button, Stack } from "@chakra-ui/react";
 import * as yup from "yup";
