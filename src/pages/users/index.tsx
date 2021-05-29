@@ -23,12 +23,27 @@ import { api } from "../../services/api";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
-import { useUsers } from "../../services/hooks/useUsers";
+import { getUsers, useUsers } from "../../services/hooks/useUsers";
 import { queryClient } from "../../services/queryClient";
+import { GetServerSideProps } from "next";
 
-export default function UserList() {
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: string;
+};
+
+type UserListProps = {
+  totalCount: number;
+  users: User[];
+};
+
+export default function UserList(props: UserListProps) {
   const [page, setPage] = useState(1);
-  const { data, isLoading, error, isFetching } = useUsers(page);
+  const { data, isLoading, error, isFetching } = useUsers(page, {
+    // initialData: props,
+  });
 
   const isWideVersion = useBreakpointValue({
     default: false,
@@ -64,17 +79,16 @@ export default function UserList() {
               )}
             </Heading>
 
-            <Link href="/users/create" passHref>
-              <Button
-                as="a"
-                size="lg"
-                fontSize="small"
-                colorScheme="pink"
-                leftIcon={<Icon as={RiAddLine} fontSize="20" />}
-              >
-                Criar novo
-              </Button>
-            </Link>
+            <Button
+              as="a"
+              href="/users/create"
+              size="lg"
+              fontSize="small"
+              colorScheme="pink"
+              leftIcon={<Icon as={RiAddLine} fontSize="20" />}
+            >
+              Criar novo
+            </Button>
           </Flex>
           {isLoading ? (
             <Flex justify="center">
@@ -152,3 +166,14 @@ export default function UserList() {
     </Box>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  // const { users, totalCount } = await getUsers(1);
+
+  return {
+    props: {
+      // users,
+      // totalCount,
+    },
+  };
+};
